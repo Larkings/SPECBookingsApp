@@ -44,7 +44,7 @@ The Spec Booking App uses a number of open source projects to work properly:
 
 ## Installation
 
-- [Installation Guide](https://gitlab.fdmci.hva.nl/-/ide/project/android-app-development1/september-2022/dt-volkert-boonstra/projectmd/team5/specbooking/tree/main/-/manuals/installation.md/) - Go here to see a detailed installation/build manual
+- [Installation Guide](https://gitlab.fdmci.hva.nl/android-app-development1/september-2022/dt-volkert-boonstra/projectmd/team5/specbooking/-/blob/main/manuals/installation.md) - Go here to see a detailed installation/build manual
 
 
 ## Manual
