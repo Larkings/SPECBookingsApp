@@ -44,7 +44,7 @@ The Spec Booking App uses a number of open source projects to work properly:
 
 ## Installation
 
-- [Installion Guide](https://xxx.xx) - Go here to see a detailed installation manual
+- [Installation Guide](https://xxx.xx) - Go here to see a detailed installation/build manual
 
 
 ## Manual
