@@ -35,11 +35,11 @@ as development goes along. These chapter are accesable via the given links.
 
 The Spec Booking App uses a number of open source projects to work properly:
 
-- [React Native] - Create native apps for Android, iOS, and more using React
-- [node.js] - evented I/O for the backend
-- [Express] - fast node.js network app framework [@tjholowaychuk]
+- [React Native] (https://reactnative.dev) - Create native apps for Android, iOS, and more using React
+- [node.js] (https://nodejs.org) - evented I/O for the backend
+- [Express] (https://expressjs.com) - fast node.js network app framework [@tjholowaychuk]
 - [Expo](https://expo.dev) - Build one project that runs natively on all your users' devices
-- [jQuery] - duh
+- [jQuery] (https://jquery.com) - duh
 
 
 ## Installation
