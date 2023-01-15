@@ -7,6 +7,7 @@ import {
   Text,
   Button,
 } from "react-native";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -20,6 +21,10 @@ function WelcomeScreen({ navigation }) {
         <Image style={styles.logo} source={require("../assets/spec.png")} />
         <Text style={{ color: "white" }}>Tagline vul het maar in!</Text>
         <Button title="TEST KNOP" onPress={() => navigation.push("Viewer")} />
+        <Button
+          title="ARTIST SCREEN"
+          onPress={() => navigation.push("Artists")}
+        />
       </View>
       <View style={styles.loginButton}></View>
       <View style={styles.registerButton}></View>
