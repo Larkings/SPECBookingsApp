@@ -17,7 +17,7 @@ const listings = [
   {
     id: 1,
     title: "Ali B",
-    price: 10,
+    price: -10,
     image: require("../assets/ali-b.jpg"),
   },
   {
@@ -38,19 +38,43 @@ const listings = [
     price: 1000,
     image: require("../assets/Persfoto-01-Ronnie-Flex-min-scaled.jpg"),
   },
+  {
+    id: 5,
+    title: "Boef",
+    price: 1000,
+    image: require("../assets/PERSFOTO-BOEF-02-scaled-e1588502734578.jpg"),
+  },
+  {
+    id: 6,
+    title: "Glen Faria",
+    price: 1000,
+    image: require("../assets/PERSFOTO-GLEN-FARIA-02-scaled.jpg"),
+  },
+  {
+    id: 7,
+    title: "Ice",
+    price: 1000,
+    image: require("../assets/PERSFOTO-ICE-01-min-scaled.jpg"),
+  },
+  {
+    id: 8,
+    title: "Lil Turkey Boy",
+    price: 250000,
+    image: require("../assets/1c8b2475-d5fa-471d-8c8f-82f8ada24174.jpg"),
+  },
 ];
 
 function ArtistScreen(props) {
   return (
     <Screen style={styles.screen}>
       <FlatList
-        columnWrapperStyle={{ justifyContent: "space-around" }}
+        columnWrapperStyle={styles.wrapper}
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
             title={item.title}
-            subTitle={"$" + item.price}
+            subTitle={"€" + item.price}
             image={item.image}
           />
         )}
@@ -63,6 +87,9 @@ function ArtistScreen(props) {
 const styles = StyleSheet.create({
   screen: {
     padding: 20,
+  },
+  wrapper: {
+    justifyContent: "space-around",
   },
 });
 
