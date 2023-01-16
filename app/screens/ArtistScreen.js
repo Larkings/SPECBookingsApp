@@ -7,9 +7,13 @@ import {
   FlatList,
   TextInput,
   Text,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  Pressable,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Card from "../components/Card";
 import colors from "../config/colors";
@@ -66,40 +70,21 @@ const listings = [
   },
 ];
 
-function ArtistScreen(props) {
+function ArtistScreen({ navigation }) {
   const [query, setQuery] = useState("");
 
   return (
     <Screen style={styles.screen}>
       <View style={{ margin: 40 }}>
-        <Text
-          style={{
-            color: "white",
-            textAlign: "center",
-            fontFamily: "sans-serif",
-            fontSize: 40,
-          }}
-        >
-          Signees of SPEC
-        </Text>
+        <Text style={styles.title}>Signees of SPEC</Text>
       </View>
       <TextInput
         onChangeText={(text) => setQuery(text)}
         placeholder=" search here!"
-        style={{
-          height: 60,
-          fontSize: 20,
-          borderRadius: 10,
-          marginBottom: 20,
-          margin: 20,
-          borderBottomColor: "#fff",
-          backgroundColor: colors.light,
-        }}
+        style={styles.searchBar}
       />
       <FlatList
-        style={{
-          flex: 1,
-        }}
+        style={{ flex: 1 }}
         columnWrapperStyle={styles.wrapper}
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -123,53 +108,21 @@ const styles = StyleSheet.create({
   wrapper: {
     justifyContent: "space-around",
   },
+  title: {
+    color: "white",
+    textAlign: "center",
+    fontFamily: "sans-serif",
+    fontSize: 40,
+  },
+  searchBar: {
+    height: 60,
+    fontSize: 20,
+    borderRadius: 10,
+    marginBottom: 20,
+    margin: 20,
+    borderBottomColor: "#fff",
+    backgroundColor: colors.light,
+  },
 });
-
-// function ArtistScreen({ navigation }) {
-//   return (
-//     <ImageBackground
-//       style={styles.background}
-//       source={require("../assets/sep09.jpg")}
-//     >
-//       <View style={styles.artistImageContainer}>
-//         <Image
-//           style={styles.artistImage}
-//           source={require("../assets/jordan_wayne_SPEC.jpg")}
-//         />
-//         <Image
-//           style={styles.artistImage}
-//           source={require("../assets/ali-b.jpg")}
-//         />
-//         <Image
-//           style={styles.artistImage}
-//           source={require("../assets/ali-b.jpg")}
-//         />
-//         <Image
-//           style={styles.artistImage}
-//           source={require("../assets/ali-b.jpg")}
-//         />
-//       </View>
-//     </ImageBackground>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   background: {
-//     flex: 1,
-//     // justifyContent: "flex-end",
-//   },
-//   artistImageContainer: {
-//     flex: 1,
-//     flexDirection: "row",
-//     justifyContent: "space-around",
-//     alignItems: "center",
-//     alignContent: "center",
-//     flexWrap: "wrap",
-//   },
-//   artistImage: {
-//     width: 180,
-//     height: 180,
-//   },
-// });
 
 export default ArtistScreen;
