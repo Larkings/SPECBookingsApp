@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ImageBackground,
   StyleSheet,
   View,
   Image,
   FlatList,
+  TextInput,
+  Text,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -65,9 +67,39 @@ const listings = [
 ];
 
 function ArtistScreen(props) {
+  const [query, setQuery] = useState("");
+
   return (
     <Screen style={styles.screen}>
+      <View style={{ margin: 40 }}>
+        <Text
+          style={{
+            color: "white",
+            textAlign: "center",
+            fontFamily: "sans-serif",
+            fontSize: 40,
+          }}
+        >
+          Signees of SPEC
+        </Text>
+      </View>
+      <TextInput
+        onChangeText={(text) => setQuery(text)}
+        placeholder=" search here!"
+        style={{
+          height: 60,
+          fontSize: 20,
+          borderRadius: 10,
+          marginBottom: 20,
+          margin: 20,
+          borderBottomColor: "#fff",
+          backgroundColor: colors.light,
+        }}
+      />
       <FlatList
+        style={{
+          flex: 1,
+        }}
         columnWrapperStyle={styles.wrapper}
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
