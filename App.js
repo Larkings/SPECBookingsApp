@@ -1,5 +1,4 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
@@ -8,8 +7,6 @@ import ArtistScreen from "./app/screens/ArtistScreen";
 import ArtistProfileScreen from "./app/screens/ArtistProfileScreen";
 import BookingScreen from "./app/screens/BookingScreen";
 import SigneeScreen from "./app/screens/SigneeScreen";
-
-import AppText from "./app/components/AppText/AppText";
 
 const Stack = createNativeStackNavigator();
 
