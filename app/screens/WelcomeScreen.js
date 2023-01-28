@@ -1,61 +1,95 @@
-import React, { useState } from "react";
+import React, {  useState, useEffect  } from "react";
 import {
   ImageBackground,
   StyleSheet,
   View,
   Image,
-  Text,
   Button,
-  TextInput,
+  TextInput
 } from "react-native";
-
+import { firebase } from '../../config';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ViewImageScreen from "./ViewImageScreen";
 
 function WelcomeScreen({ navigation }) {
-  const [username, setUsername] = useState("");
+
+  const Stack = createNativeStackNavigator();
+
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  return (
+
+  function onAuthStateChanged(user){
+    setUser (user);
+    if(initializing) setInitializing(false);
+  }
+  useEffect(() => {
+    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+  if(initializing) return null;
+
+  function onAuthStateChanged(user){
+    setUser (user);
+    if(initializing) setInitializing(false);
+  } 
+
+  loginUser = async (email, password) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password)
+    } catch (error){
+      alert (error.message)
+    }
+  }
+
+  if (!user){
+    return (
+      <ImageBackground
+        style={styles.background}
+        source={require("../assets/sep09.jpg")}
+        >
+        <View style={styles.logoContainer}>
+          <Image style={styles.logo} source={require("../assets/spec.png")} />
+          <Button title="ARTIST SCREEN" onPress={() => navigation.push("Artists")}/>
+        </View>
+        <TextInput
+        clearButtonMode
+        onChangeText={(email) => setEmail(email)}
+        placeholder=" Email"
+        style={styles.usernameBar}
+        />
+        <TextInput
+        clearButtonMode
+        secureTextEntry
+        onChangeText={(password) => setPassword(password)}
+        placeholder=" Password"
+        style={styles.passwordBar}
+        />
+        <View style={styles.container}>
+          <View style={styles.helpButton}>
+            <Button title=" ?  " onPress={() => alert(" shows alert for now instead of pop up")} />
+          </View>
+          <View style={styles.loginButton}>
+            <Button title="Sign In" onPress= {()=> loginUser(email, password)} />
+          </View>
+          <View style={styles.forgotPassButton}>
+            <Button title="Wachtwoord vergeten?" onPress={() => alert("You are navigated to the password recovery page")} />
+          </View>
+        </View>
+      </ImageBackground>
+    );
+  }
+
+  return(
     <ImageBackground
-      style={styles.background}
-      source={require("../assets/sep09.jpg")}
-      >
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require("../assets/spec.png")} />
-        <Button title="ARTIST SCREEN" onPress={() => navigation.push("Artists")}/>
-      </View>
-      <TextInput
-      clearButtonMode
-      onChangeText={(text) => setUsername(text)}
-      placeholder=" Username"
-      style={styles.usernameBar}
-      />
-      
-      <TextInput
-      clearButtonMode
-      secureTextEntry
-      onChangeText={(text) => setPassword(text)}
-      placeholder=" Password"
-      style={styles.passwordBar}
-      />
-
-      <View style={styles.container}>
-        <View style={styles.helpButton}>
-          <Button title=" ?  " onPress={() => alert(" shows alert for now instead of pop up")} />
-        </View>
-        <View style={styles.userNameStyle}>
-
-        </View>
-        <View style={styles.passWordStyle}>
-
-        </View>
-        <View style={styles.loginButton}>
-          <Button title="Sign In" onPress={() => navigation.push("Viewer")} />
-        </View>
-        <View style={styles.forgotPassButton}>
-          <Button title="Wachtwoord vergeten?" onPress={() => alert("You are navigated to the password recovery page")} />
-        </View>
-      </View>
+    style={styles.background}
+    source={require("../assets/sep09.jpg")}
+    >
+      <Stack.Navigator>
+      <Stack.Screen name="Viewer" component={ViewImageScreen} />
+      </Stack.Navigator>
     </ImageBackground>
   );
 }
