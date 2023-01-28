@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
@@ -8,8 +7,6 @@ import ArtistScreen from "./app/screens/ArtistScreen";
 import ArtistProfileScreen from "./app/screens/ArtistProfileScreen";
 import BookingScreen from "./app/screens/BookingScreen";
 import SigneeScreen from "./app/screens/SigneeScreen";
-
-import AppText from "./app/components/AppText/AppText";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,8 +26,8 @@ export default function App() {
           component={ArtistScreen}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
-          name="Artist Details"
+          //options={{ headerShown: false }}
+          name="ArtistDetails"
           component={ArtistProfileScreen}
         />
         <Stack.Screen

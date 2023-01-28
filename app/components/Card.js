@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from "react-native";
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ title, subTitle, image }) {
+function Card({ title, subTitle, image, navigation }) {
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={image} />
@@ -22,13 +22,13 @@ function Card({ title, subTitle, image }) {
 
 const styles = StyleSheet.create({
   card: {
-    width: "40%",
+    width: 160,
     height: 200,
     borderRadius: 15,
     backgroundColor: colors.white,
     marginBottom: 20,
-    // marginLeft: 10,
-    // marginRight: 10,
+    marginLeft: 10,
+    marginRight: 10,
     overflow: "hidden",
   },
   detailsContainer: {
