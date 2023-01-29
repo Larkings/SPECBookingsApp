@@ -27,10 +27,6 @@ function ArtistScreen({ navigation }) {
         placeholder=" search here!"
         style={styles.searchBar}
       />
-      <Button
-        title="ARTIST Details"
-        onPress={() => navigation.push("ArtistDetails")}
-      />
       <FlatList
         style={{ flex: 1 }}
         columnWrapperStyle={styles.wrapper}
