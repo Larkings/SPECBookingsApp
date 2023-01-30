@@ -1,5 +1,7 @@
+import 'react-native-gesture-handler';
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -9,8 +11,9 @@ import BookingScreen from "./app/screens/BookingScreen";
 import SigneeScreen from "./app/screens/SigneeScreen";
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
@@ -42,5 +45,8 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }
+
+export default App;
