@@ -26,8 +26,8 @@ export default function App() {
           component={ArtistScreen}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
-          name="Artist Details"
+          //options={{ headerShown: false }}
+          name="ArtistDetails"
           component={ArtistProfileScreen}
         />
         <Stack.Screen

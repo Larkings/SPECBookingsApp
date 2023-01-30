@@ -95,7 +95,7 @@ function WelcomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     position: "absolute",
     bottom: 60,
     alignItems: "center",
@@ -114,21 +114,21 @@ const styles = StyleSheet.create({
   logoContainer: {
     position: "absolute",
     top: 150,
-    left:80,
+    left: 80,
     alignItems: "center",
     padding: 8,
     margin: 10,
     width: 200,
   },
 
-  helpButton:{
+  helpButton: {
     widht: 40,
     height: 40,
     left: 250,
     bottom: 580,
     backgroundColor: "lightgrey",
-    borderRadius:  300,
-    justifyContent:'center',
+    borderRadius: 300,
+    justifyContent: "center",
   },
 
   usernameBar: {
@@ -151,15 +151,15 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
   },
 
-  userNameStyle:{
+  userNameStyle: {
     borderWidth: 1,
-    borderColor:"black",
+    borderColor: "black",
     backgroundColor: "lightgrey",
   },
 
-  passWordStyle:{
+  passWordStyle: {
     borderWidth: 1,
-    borderColor:"black",
+    borderColor: "black",
     backgroundColor: "lightgrey",
   },
 
@@ -172,9 +172,9 @@ const styles = StyleSheet.create({
     paddingRight: 50,
     height: 60,
     backgroundColor: "lightgrey",
-    borderRadius:  20,
+    borderRadius: 20,
   },
-  
+
   forgotPassButton: {
     bottom: 20,
     left: 100,
