@@ -1,7 +1,5 @@
 import React from "react";
 import { Image, StyleSheet, View, Button } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import colors from "../config/colors";
 

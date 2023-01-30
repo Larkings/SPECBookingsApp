@@ -8,7 +8,6 @@ import {
   TextInput
 } from "react-native";
 import { firebase } from '../../config';
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ViewImageScreen from "./ViewImageScreen";
 
@@ -52,7 +51,6 @@ function WelcomeScreen({ navigation }) {
         >
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require("../assets/spec.png")} />
-          <Button title="ARTIST SCREEN" onPress={() => navigation.push("Artists")}/>
         </View>
         <TextInput
         clearButtonMode
