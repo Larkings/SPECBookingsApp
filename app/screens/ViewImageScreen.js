@@ -1,19 +1,16 @@
 import React from "react";
-import { Image, StyleSheet, View, Button } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Image, StyleSheet, View } from "react-native";
 
 import colors from "../config/colors";
 
-function ViewImageScreen({ navigation }) {
+function ViewImageScreen({ navigation, route }) {
+  const { item, testParam } = route.params;
   return (
     <View style={styles.container}>
-      <View style={styles.closeIcon}></View>
-      <View style={styles.deleteIcon}></View>
       <Image
         resizeMode="contain"
         style={styles.image}
-        source={require("../assets/numidia.jpg")}
+        source={JSON.stringify(item.image)}
       />
     </View>
   );
