@@ -18,8 +18,8 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Welcome">
         <Drawer.Screen name="Home" component={StackNavigator} />
-        <Drawer.Screen name="Booking" component={BookingScreen} />
-        <Drawer.Screen name="Signees" component={SigneeScreen} />
+        <Drawer.Screen name="View Image Screen" component={ViewImageScreen} />
+        <Drawer.Screen name="Artist Screen" component={ArtistScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
