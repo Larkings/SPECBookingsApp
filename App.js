@@ -8,11 +8,16 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ArtistScreen from "./app/screens/ArtistScreen";
 import ArtistProfileScreen from "./app/screens/ArtistProfileScreen";
 import { Alert } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+    // export default function App({pos}) {
+  // const position = pos=='right'?'left':'right';
+  
 
 // TODO Alert Button for sign out > naar Welcome?  
 // export default function App({ navigation }) {
@@ -38,8 +43,10 @@ export default function App() {
 // };
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Welcome">
-        <Drawer.Screen name="Home" component={StackNavigator} />
+      <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right"
+      >
+        <Drawer.Screen name="Login" component={StackNavigator} />
+        <Drawer.Screen name='Image Screen' component={MyTabs} />
         <Drawer.Screen name="View Image Screen" component={ViewImageScreen} />
         <Drawer.Screen name="Artist Screen" component={ArtistScreen} />
       </Drawer.Navigator>
@@ -68,3 +75,15 @@ function StackNavigator() {
     </Stack.Navigator>
   );
 }
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Image" component={ViewImageScreen} />
+      <Tab.Screen name="Artist" component={ArtistScreen} />
+    </Tab.Navigator>
+  );
+}
+

@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   Button,
 } from "react-native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 import Card from "../components/Card";
 import colors from "../config/colors";
@@ -48,6 +50,19 @@ function ArtistScreen({ navigation }) {
     </Screen>
   );
 }
+
+const Tab = createBottomTabNavigator();
+
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Image" component={ViewImageScreen} />
+      <Tab.Screen name="Artist" component={ArtistScreen} />
+    </Tab.Navigator>
+  );
+};
+
+
 
 const styles = StyleSheet.create({
   screen: {
