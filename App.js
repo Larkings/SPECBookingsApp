@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -10,47 +10,17 @@ import Registration from "./app/screens/Registration";
 import UserScreen from "./app/screens/UserScreen";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { firebase } from './config';
+import 'react-native-gesture-handler';
 
-import AppText from "./app/components/AppText/AppText";
+
+
+
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
-function Root() {
-  return (
-    <Drawer.Navigator initialRouteName='Navigatiebar'>
-      <Drawer.Screen name="WelcomeScreen" component={WelcomeScreen} />
-      <Drawer.Screen name="ArtistScreen" component={ArtistScreen} />
-    </Drawer.Navigator>
-  );
-}
 
 export default function App() {
-    // export default function App({pos}) {
-  // const position = pos=='right'?'left':'right';
-  
-
-// TODO Alert Button for sign out > naar Welcome?  
-// export default function App({ navigation }) {
-//   const showAlert = () => {
-//     Alert.alert(
-//     "Are you sure?",
-//     "U want to Sign Out?",
-//     [
-//       {
-//         text: 'Cancel',
-//         onPress: () => {},
-//         style: 'cancel',
-//       },
-//       {
-//         text: 'OK',
-//         onPress: () => {
-//           navigation.navigate('Artist Screen');
-//       },
-//     },
-//   ],
-//   { cancelable: false },
-//   );
-// };
 
 const changePassword =() => {
   firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser.email)
@@ -64,8 +34,8 @@ const changePassword =() => {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right">
-        <Drawer.Screen name="Login" component={StackNavigator} />
-        <Drawer.Screen name='Image Screen' component={MyTabs} />
+        <Drawer.Screen name="Home" component={StackNavigator} />
+        <Drawer.Screen options={{ headerShown: false }}name='Tab Screen' component={MyTabs} />
         <Drawer.Screen name="View Image Screen" component={ViewImageScreen} />
         <Drawer.Screen name="Artist Screen" component={ArtistScreen} />
         <Drawer.Screen name="User" component={UserScreen} />
@@ -76,11 +46,7 @@ const changePassword =() => {
 
 function StackNavigator() {
   return (
-
-{/* Dit is voor navigatie */}
     <Stack.Navigator initialRouteName="Welcome">
-      <Stack.Screen options={{
-        }} name="Root" component={Root} /> 
       <Stack.Screen
         options={{ headerShown: false }}
         name="Welcome"

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { firebase } from '../../config';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ViewImageScreen from "./ViewImageScreen";
+import ArtistScreen from "./ArtistScreen";
 
 function WelcomeScreen({ navigation }) {
 
@@ -100,7 +100,7 @@ function WelcomeScreen({ navigation }) {
     source={require("../assets/sep09.jpg")}
     >
       <Stack.Navigator>
-      <Stack.Screen name="Viewer" component={ViewImageScreen} />
+      <Stack.Screen name="Artists" component={ArtistScreen} />
       </Stack.Navigator>
     </ImageBackground>
   );
