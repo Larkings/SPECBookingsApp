@@ -3,17 +3,14 @@ import { Image, StyleSheet, View, Button } from "react-native";
 
 import colors from "../config/colors";
 
-function ViewImageScreen({ navigation }) {
+function ViewImageScreen({ navigation, route }) {
+  const { item, testParam } = route.params;
   return (
     <View style={styles.container}>
-
-<Button title="User" onPress={() => navigation.push("User")} />
-      <View style={styles.closeIcon}></View>
-      <View style={styles.deleteIcon}></View>
       <Image
         resizeMode="contain"
         style={styles.image}
-        source={require("../assets/numidia.jpg")}
+        source={JSON.stringify(item.image)}
       />
     </View>
   );
