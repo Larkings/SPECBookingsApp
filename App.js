@@ -6,8 +6,12 @@ import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ArtistScreen from "./app/screens/ArtistScreen";
 import ArtistProfileScreen from "./app/screens/ArtistProfileScreen";
+import Registration from "./app/screens/Registration";
+import UserScreen from "./app/screens/UserScreen";
 import { Alert } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { firebase } from './config';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -40,14 +44,24 @@ export default function App() {
 //   { cancelable: false },
 //   );
 // };
+
+const changePassword =() => {
+  firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser.email)
+  .then(()=> {
+    alert("Password reset email sent")
+  }).catch((error) =>{
+    alert(error)
+  })
+}
+
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right"
-      >
+      <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right">
         <Drawer.Screen name="Login" component={StackNavigator} />
         <Drawer.Screen name='Image Screen' component={MyTabs} />
         <Drawer.Screen name="View Image Screen" component={ViewImageScreen} />
         <Drawer.Screen name="Artist Screen" component={ArtistScreen} />
+        <Drawer.Screen name="User" component={UserScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -70,6 +84,16 @@ function StackNavigator() {
       <Stack.Screen
         name="ArtistDetails"
         component={ArtistProfileScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Register"
+        component={Registration}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="User"
+        component={UserScreen}
       />
     </Stack.Navigator>
   );

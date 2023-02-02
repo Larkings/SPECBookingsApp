@@ -6,6 +6,8 @@ import colors from "../config/colors";
 function ViewImageScreen({ navigation }) {
   return (
     <View style={styles.container}>
+
+<Button title="User" onPress={() => navigation.push("User")} />
       <View style={styles.closeIcon}></View>
       <View style={styles.deleteIcon}></View>
       <Image
