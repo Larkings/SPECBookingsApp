@@ -1,43 +1,123 @@
-import { StatusBar } from 'expo-status-bar';
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  Image, 
-  Alert, 
-  TouchableWithoutFeedback, 
-  TouchableOpacity, 
-  SafeAreaView, 
-  Button } from 'react-native';
-  import {
-    useDimensions,
-    useDeviceOrientation
-  } from '@react-native-community/hooks'
+import React, { useState, useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ViewImageScreen from "./app/screens/ViewImageScreen";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import ArtistScreen from "./app/screens/ArtistScreen";
+import ArtistProfileScreen from "./app/screens/ArtistProfileScreen";
+import Registration from "./app/screens/Registration";
+import UserScreen from "./app/screens/UserScreen";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { firebase } from './config';
 
-export default function App() {
-  console.log(useDimensions(), useDeviceOrientation());
-  const orientation = useDeviceOrientation();
+import AppText from "./app/components/AppText/AppText";
 
+const Stack = createNativeStackNavigator();
+
+function Root() {
   return (
-    <SafeAreaView style={[styles.container, containerStyle]}>
-      <Button 
-      color="blue"
-      title="Click me" 
-      onPress={() => Alert.alert("My title", "My message", [
-        {text: "Yes", onPress: () => console.log("Yes")},
-        {text: "no", onPress: () => console.log("No")}
-      ])}/>
-    </SafeAreaView>
+    <Drawer.Navigator initialRouteName='Navigatiebar'>
+      <Drawer.Screen name="WelcomeScreen" component={WelcomeScreen} />
+      <Drawer.Screen name="ArtistScreen" component={ArtistScreen} />
+    </Drawer.Navigator>
   );
 }
 
-const containerStyle = { backgroundColor: "orange"}
+export default function App() {
+    // export default function App({pos}) {
+  // const position = pos=='right'?'left':'right';
+  
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// TODO Alert Button for sign out > naar Welcome?  
+// export default function App({ navigation }) {
+//   const showAlert = () => {
+//     Alert.alert(
+//     "Are you sure?",
+//     "U want to Sign Out?",
+//     [
+//       {
+//         text: 'Cancel',
+//         onPress: () => {},
+//         style: 'cancel',
+//       },
+//       {
+//         text: 'OK',
+//         onPress: () => {
+//           navigation.navigate('Artist Screen');
+//       },
+//     },
+//   ],
+//   { cancelable: false },
+//   );
+// };
+
+const changePassword =() => {
+  firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser.email)
+  .then(()=> {
+    alert("Password reset email sent")
+  }).catch((error) =>{
+    alert(error)
+  })
+}
+
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right">
+        <Drawer.Screen name="Login" component={StackNavigator} />
+        <Drawer.Screen name='Image Screen' component={MyTabs} />
+        <Drawer.Screen name="View Image Screen" component={ViewImageScreen} />
+        <Drawer.Screen name="Artist Screen" component={ArtistScreen} />
+        <Drawer.Screen name="User" component={UserScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+
+function StackNavigator() {
+  return (
+
+{/* Dit is voor navigatie */}
+    <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Screen options={{
+        }} name="Root" component={Root} /> 
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Welcome"
+        component={WelcomeScreen}
+      />
+      <Stack.Screen name="Viewer" component={ViewImageScreen} />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Artists"
+        component={ArtistScreen}
+      />
+      <Stack.Screen
+        name="ArtistDetails"
+        component={ArtistProfileScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Register"
+        component={Registration}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="User"
+        component={UserScreen}
+      />
+    </Stack.Navigator>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Image" component={ViewImageScreen} />
+      <Tab.Screen name="Artist" component={ArtistScreen} />
+    </Tab.Navigator>
+  );
+}
+

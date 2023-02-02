@@ -1,72 +1,68 @@
+import { Image, TouchableOpacity, View, Button, TextInput, StyleSheet,  ImageBackground } from "react-native";
 import React, {  useState, useEffect  } from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  View,
-  Image,
-  Button,
-  TextInput
-} from "react-native";
 import { firebase } from '../../config';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ViewImageScreen from "./ViewImageScreen";
+import { NavigationContainer } from "@react-navigation/native";
 
-function WelcomeScreen({ navigation }) {
+function Registration({navigation}) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const Stack = createNativeStackNavigator();
 
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function onAuthStateChanged(user){
-    setUser (user);
-    if(initializing) setInitializing(false);
-  }
-  useEffect(() => {
-    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
-  }, []);
-  if(initializing) return null;
-
-  function onAuthStateChanged(user){
-    setUser (user);
-    if(initializing) setInitializing(false);
-  } 
-
-  loginUser = async (email, password) => {
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password)
-    } catch (error){
-      alert (error.message)
-    }
-  }
-
-  const forgetPassword =() => {
-    firebase.auth().sendPasswordResetEmail(email)
+  registerUser = async (email,password,firstName,lastName) => {
+    await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(()=> {
-      alert("Password reset email sent")
-    }).catch((error) =>{
-      alert(error)
+      firebase.auth().currentUser.sendEmailVerification({
+        handleCodeInApp: true,
+        url: 'https://fire-auth-71996.firebaseapp.com',
+      })
+      .then(() => {
+        alert('verification email sent')
+      }).catch((error) => {
+        alert(error.message)
+      })
+      .then(() => {
+        firebase.firestore().collection('users')
+        .doc(firebase.auth().currentUser.uid)
+        .set({
+          firstName,
+          lastName,
+          email,
+      })
     })
+    .catch((error) => {
+      alert(error.message)
+    })
+  })
+  .catch((error) => {
+    alert(error.message)
+  })
+
   }
   
-
-  if (!user){
-    return (
-      <ImageBackground
-        style={styles.background}
-        source={require("../assets/sep09.jpg")}
-        >
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require("../assets/spec.png")} />
-        </View>
+  return (
+  <ImageBackground
+  style={styles.background}
+  source={require("../assets/sep09.jpg")}>
+        <TextInput
+        clearButtonMode
+        onChangeText={(firstName) => setFirstName(firstName)}
+        placeholder=" First Name"
+        style={styles.usernameBar}
+        />
+        <TextInput
+        clearButtonMode
+        onChangeText={(lastName) => setLastName(lastName)}
+        placeholder=" Last Name"
+        style={styles.usernameBar}
+        />
         <TextInput
         clearButtonMode
         onChangeText={(email) => setEmail(email)}
         placeholder=" Email"
-        autoCorrect={false}
         style={styles.usernameBar}
         />
         <TextInput
@@ -81,29 +77,15 @@ function WelcomeScreen({ navigation }) {
             <Button title=" ?  " onPress={() => alert(" shows alert for now instead of pop up")} />
           </View>
           <View style={styles.loginButton}>
-            <Button title="Sign In" onPress= {()=> loginUser(email, password)} />
+            <Button title="Let's Register!" onPress = {()=> registerUser(email,password,firstName,lastName)} />
           </View>
           <View style={styles.forgotPassButton}>
-            <Button title="Wachtwoord vergeten?" onPress={() => forgetPassword()} />
-          </View>
-          <View style={styles.forgotPassButton}>
-            <Button title="Register?" onPress={() => navigation.push("Register")} />
+            <Button title="Want to sign in?" onPress = {()=> navigation.push("Welcome")}/>
           </View>
         </View>
       </ImageBackground>
-    );
-  }
+  )
 
-  return(
-    <ImageBackground
-    style={styles.background}
-    source={require("../assets/sep09.jpg")}
-    >
-      <Stack.Navigator>
-      <Stack.Screen name="Viewer" component={ViewImageScreen} />
-      </Stack.Navigator>
-    </ImageBackground>
-  );
 }
 
 const styles = StyleSheet.create({
@@ -175,7 +157,7 @@ const styles = StyleSheet.create({
   },
 
   loginButton: {
-    left: 100,
+    left: 90,
     bottom: 50,
     paddingTop: 10,
     paddingBottom: 10,
@@ -188,7 +170,7 @@ const styles = StyleSheet.create({
 
   forgotPassButton: {
     bottom: 20,
-    left: 100,
+    left: 90,
   },
   title: {
     fontSize: 40,
@@ -198,4 +180,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default Registration;
