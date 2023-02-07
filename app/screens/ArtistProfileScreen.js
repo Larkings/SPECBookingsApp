@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   View,
@@ -6,8 +6,10 @@ import {
   ScrollView,
   Image,
   FlatList,
+  Pressable,
 } from "react-native";
 
+import listings from "../config/listings";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import { AntDesign } from "@expo/vector-icons";
@@ -35,10 +37,19 @@ function ArtistProfileScreen({ navigation, route }) {
         <Text style={styles.title}>{route.params.item.title}</Text>
       </View>
       <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={route.params.item.image.toString()}
-        />
+        <Pressable
+          onPress={() =>
+            navigation.push("Viewer", {
+              item: route.params.item,
+              testParam: "stringy McStringFace",
+            })
+          }
+        >
+          <Image
+            style={styles.image}
+            source={route.params.item.image.toString()}
+          />
+        </Pressable>
       </View>
       <View style={styles.collapseContainer}>
         <Collapse>
