@@ -2,7 +2,12 @@ export default [
   {
     id: 1,
     title: "Ali B",
-    price: -10,
+    price: 10,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/ali-b.jpg"),
     bio: "Toen Ali B tien jaar geleden zijn tweede en vorige album Petje Af uitbracht,\
     bleek dat het begin van een groot avontuur. Hij werd echtgenoot en vader, maakte hij \
@@ -26,6 +31,11 @@ export default [
     id: 2,
     title: "Jordan Wayne",
     price: 1000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/jordan_wayne_SPEC.jpg"),
     bio: "Jordan Wayne is sinds zijn twaalfde bezig als producer en werkte al samen met alle\
     levende legendes in de hiphop: Jack $hirak, Lil Kleine, Ali B, Boef, do we need to say more?\
@@ -38,6 +48,11 @@ export default [
     id: 3,
     title: "Numidia",
     price: 1000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/numidia.jpg"),
     bio: "Als je op zon vroege leeftijd al zoveel talent laat zien, wordt dat opgemerkt.\
     Voor de Nederlands-Marokkaanse Numidia El Morabet (1999) begon het allemaal met The\
@@ -49,6 +64,11 @@ export default [
     id: 4,
     title: "Ronnie Flex",
     price: 1000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/Persfoto-01-Ronnie-Flex-min-scaled.jpg"),
     bio: "RONNIE FLEX STAAT OP HET PUNT FANS EN COLLEGAS TE LATEN ZIEN DAT HIJ MUZIKAAL OP\
     EENZAME HOOGTE STAAT. VELE KENNEN RONELL LANGSTON PLASSCHAERT, ALIAS RONNIE FLEX, ALS\
@@ -68,6 +88,11 @@ export default [
     id: 5,
     title: "Boef",
     price: 1000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/PERSFOTO-BOEF-02-scaled-e1588502734578.jpg"),
     bio: "Sofiane Boussaadia, beter bekend als Boef, is een Nederlandstalige rapper en vlogger met\
     een Franse nationaliteit. Boef maakt in 2015 indruk met zijn Zonamo sessie. In februari 2016\
@@ -81,6 +106,11 @@ export default [
     id: 6,
     title: "Glen Faria",
     price: 1000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/PERSFOTO-GLEN-FARIA-02-scaled.jpg"),
     bio: "Glen Faria is een veelzijdige zanger, rapper en songwriter uit Amsterdam Zuidoost.\
     Hij staat bekend om zijn levensverhalen en situaties die voor velen herkenbaar zijn. De\
@@ -93,6 +123,11 @@ export default [
     id: 7,
     title: "Ice",
     price: 1000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/PERSFOTO-ICE-01-min-scaled.jpg"),
     bio: "De Marokkaanse rapper ICE heeft een mythische status binnen de Nederlandse hiphopscene en\
     loopt langer mee dan je misschien door zou hebben. Met een feature op de single Pistola van\
@@ -108,6 +143,11 @@ export default [
     id: 8,
     title: "Lil Turkey Boy",
     price: 250000,
+    optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
+    27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
+    26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
+    22 JAN 22 ALI B - KOORTS Schouwburg Amstelveen , Amstelveen\
+    19 JAN 22 ALI B - KOORTS Goudse Schouwburg - Gouda",
     image: require("../assets/1c8b2475-d5fa-471d-8c8f-82f8ada24174.jpg"),
     bio: "Lil Turkey Boy was een opkomende rapartiest die bekend werd om\
     zijn unieke stijl en energieke live-optredens. Hij groeide op in een\

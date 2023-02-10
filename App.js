@@ -11,6 +11,7 @@ import UserScreen from "./app/screens/UserScreen";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { firebase } from './config';
 import 'react-native-gesture-handler';
+import CalendarScreen from "./app/screens/CalendarScreen";
 
 
 
@@ -71,6 +72,11 @@ function StackNavigator() {
         options={{ headerShown: false }}
         name="User"
         component={UserScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Calendar"
+        component={CalendarScreen}
       />
     </Stack.Navigator>
   );

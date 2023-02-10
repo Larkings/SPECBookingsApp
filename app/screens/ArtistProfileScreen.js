@@ -5,11 +5,9 @@ import {
   Text,
   ScrollView,
   Image,
-  FlatList,
   Pressable,
 } from "react-native";
 
-import listings from "../config/listings";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import { AntDesign } from "@expo/vector-icons";
@@ -18,6 +16,7 @@ import {
   CollapseHeader,
   CollapseBody,
 } from "accordion-collapse-react-native";
+import CalendarScreen from "./CalendarScreen";
 
 const renderItem = (item) => (
   <Collapse key={item.title}>
@@ -76,7 +75,22 @@ function ArtistProfileScreen({ navigation, route }) {
           </CollapseHeader>
           <CollapseBody style={styles.collapseBody}>
             <ScrollView>
-              <Text style={styles.text}>{route.params.item.bio}</Text>
+              <Text style={styles.text}>{route.params.item.optreden}</Text>
+            </ScrollView>
+          </CollapseBody>
+        </Collapse>
+      </View>
+      <View style={styles.collapseContainer}>
+        <Collapse>
+          <CollapseHeader>
+            <Text style={styles.button}>
+              {`Prijs:\t\t\t`}
+              <AntDesign name="downsquare" size={30} color={colors.light} />
+            </Text>
+          </CollapseHeader>
+          <CollapseBody style={styles.collapseBody}>
+            <ScrollView>
+              <Text style={styles.text}>{route.params.item.price}</Text>
             </ScrollView>
           </CollapseBody>
         </Collapse>
@@ -91,7 +105,7 @@ function ArtistProfileScreen({ navigation, route }) {
           </CollapseHeader>
           <CollapseBody style={styles.collapseBody}>
             <ScrollView>
-              <Text style={styles.text}>{route.params.item.bio}</Text>
+              <CalendarScreen></CalendarScreen>
             </ScrollView>
           </CollapseBody>
         </Collapse>
@@ -133,7 +147,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "#fff",
   },
   collapseBody: {
-    height: 420,
+    width: 360,
+    height: 620,
     borderRadius: 8,
     backgroundColor: "#ffffff30",
     padding: 10,

@@ -1,8 +1,10 @@
 import React, {  useState, useEffect  } from "react";
-import { Text, View, Button, StyleSheet, ImageBackground } from "react-native";
+import { View, Button, StyleSheet, ImageBackground } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { firebase } from '../../config';
 
-function UserScreen(props) {
+function UserScreen({navigation}) {
+  const Stack = createNativeStackNavigator();
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -23,7 +25,14 @@ function UserScreen(props) {
       alert("Password reset email sent")
     }).catch((error) =>{
       alert(error)
-    })
+    })    
+  }
+
+  const signOutMethod = () => {
+    firebase.auth().signOut()
+    .then(()=>
+      navigation.push("Welcome")
+    )
   }
 
   return(
@@ -35,11 +44,13 @@ function UserScreen(props) {
         <Button title="Change Password" onPress={() => changePassword()} />
       </View>
       <View style={styles.loginButton}>
-        <Button title="Sign out" onPress= {()=> firebase.auth().signOut()} />
+        <Button title="Sign out" onPress= {()=> signOutMethod()} />
       </View>
     </ImageBackground>
   )
 }
+
+<Button title="Register?" onPress={() => navigation.push("Register")} />
 
 const styles = StyleSheet.create({
   background: {
