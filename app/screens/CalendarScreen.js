@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet} from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
+import * as MailComposer from 'expo-mail-composer';
 
-LocaleConfig.locales['en'] = {
-  monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  monthNamesShort: ['Jan.', 'Feb.', 'Mar', 'Apr', 'May', 'Jun', 'Jul.', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+LocaleConfig.locales['nl'] = {
+  monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+  monthNamesShort: ['Jan.', 'Feb.', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul.', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+  dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+  dayNamesShort: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
 };
 
 function CalendarScreen({ navigation }) {
+  LocaleConfig.defaultLocale = 'nl';
   const [selected, setSelected] = useState('');
-  
-  LocaleConfig.defaultLocale = 'en';
+
+  const offerteAanvraag = () => {
+
+  }
 
 return (
   <View>
@@ -20,9 +24,10 @@ return (
     <Calendar
     onDayPress={day => setSelected(day.dateString)}
     markedDates={{ [selected]: { selected: true } }}
+    hideExtraDays ={true}
     />
-    <View style = {styles.kippetjes}>
-      <Button title="Book artist" onPress= {()=> firebase.auth().signOut()} />
+    <View style = {styles.offerteButton}>
+      <Button title="Vraag offerte aan" onPress= {()=> offerteAanvraag()} />
     </View>    
   </View>
   );
@@ -33,13 +38,9 @@ return (
       paddingBottom: 10,
 
     },
-    kippetjes: {
-      left: 100,
-      bottom: 50,
-      paddingTop: 10,
-      paddingBottom: 10,
-      paddingLeft: 50,
-      paddingRight: 50,
+    offerteButton: {
+      top: 15,
+      padding: 10,
       height: 60,
       backgroundColor: "lightgrey",
       borderRadius: 20,

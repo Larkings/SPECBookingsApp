@@ -23,15 +23,6 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
 
-const changePassword =() => {
-  firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser.email)
-  .then(()=> {
-    alert("Password reset email sent")
-  }).catch((error) =>{
-    alert(error)
-  })
-}
-
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right">
