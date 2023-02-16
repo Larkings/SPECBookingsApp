@@ -6,7 +6,6 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
-  Button,
 } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -16,13 +15,13 @@ import colors from "../config/colors";
 import Screen from "../components/Screen";
 import listings from "../config/listings";
 
-function ArtistScreen({ navigation }) {
+function FavouriteScreen({ navigation }) {
   const [query, setQuery] = useState("");
 
   return (
     <Screen style={styles.screen}>
-      <View style={{ margin: 10 }}>
-        <Text style={styles.title}>Signees of SPEC</Text>
+      <View style={{ margin:10}}>
+        <Text style={styles.title}>My favourites</Text>
       </View>
       <TextInput
         onChangeText={(text) => setQuery(text)}
@@ -62,8 +61,6 @@ const TabNavigator = () => {
   );
 };
 
-
-
 const styles = StyleSheet.create({
   screen: {
     padding: 20,
@@ -87,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ArtistScreen;
+export default FavouriteScreen;

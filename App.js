@@ -12,9 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { firebase } from './config';
 import 'react-native-gesture-handler';
 import CalendarScreen from "./app/screens/CalendarScreen";
-
-
-
+import FavouriteScreen from "./app/screens/FavouriteScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -28,8 +26,7 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right">
         <Drawer.Screen name="Home" component={StackNavigator} />
         <Drawer.Screen options={{ headerShown: false }}name='Tab Screen' component={MyTabs} />
-        <Drawer.Screen name="View Image Screen" component={ViewImageScreen} />
-        <Drawer.Screen name="Artist Screen" component={ArtistScreen} />
+        <Drawer.Screen name="Signees of SPEC" component={ArtistScreen} />
         <Drawer.Screen name="User" component={UserScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
@@ -51,6 +48,7 @@ function StackNavigator() {
         component={ArtistScreen}
       />
       <Stack.Screen
+      options={{ headerShown: false }}
         name="ArtistDetails"
         component={ArtistProfileScreen}
       />
@@ -68,6 +66,11 @@ function StackNavigator() {
         options={{ headerShown: false }}
         name="Calendar"
         component={CalendarScreen}
+      />
+            <Stack.Screen
+        options={{ headerShown: false }}
+        name="Favourite"
+        component={FavouriteScreen}
       />
     </Stack.Navigator>
   );
