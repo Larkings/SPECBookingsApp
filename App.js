@@ -25,7 +25,6 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Welcome" drawerPosition="right">
         <Drawer.Screen name="Home" component={StackNavigator} />
-        <Drawer.Screen options={{ headerShown: false }}name='Tab Screen' component={MyTabs} />
         <Drawer.Screen name="Signees of SPEC" component={ArtistScreen} />
         <Drawer.Screen name="User" component={UserScreen} />
       </Drawer.Navigator>
