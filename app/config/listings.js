@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     title: "Ali B",
-    price: "€10000",
+    price: "€10000,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
@@ -30,7 +30,7 @@ export default [
   {
     id: 2,
     title: "Jordan Wayne",
-    price: "€3500",
+    price: "€3500,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
@@ -47,7 +47,7 @@ export default [
   {
     id: 3,
     title: "Numidia",
-    price: "€2500",
+    price: "€2500,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
@@ -87,7 +87,7 @@ export default [
   {
     id: 5,
     title: "Boef",
-    price: "€8000",
+    price: "€8000,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
@@ -105,7 +105,7 @@ export default [
   {
     id: 6,
     title: "Glen Faria",
-    price: "€3000",
+    price: "€3000,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
@@ -122,7 +122,7 @@ export default [
   {
     id: 7,
     title: "Ice",
-    price: "€1200",
+    price: "€1200,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
@@ -142,7 +142,7 @@ export default [
   {
     id: 8,
     title: "Lil Turkey Boy",
-    price: "€25000",
+    price: "€25000,-",
     optreden: " 05 FEB 22 ALI B - KOORTS Meervaart, Amsterdam\
     27 JAN 22 ALI B - KOORTS Theater De Storm , Winterswijk\
     26 JAN 22 ALI B - KOORTS KAF - Kunstlinie Almere Flevoland, Almere\
