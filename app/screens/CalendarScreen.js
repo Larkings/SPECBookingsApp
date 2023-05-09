@@ -32,8 +32,8 @@ function CalendarScreen({ navigation, artistname }) {
 
     if(isMailAvailable){
       MailComposer.composeAsync({
-        subject: " Offerte Aanvraag voor"+ artistname +"!",
-        body: " Ik wil graag op de datum"+ selectedDate +" de artiest" + artistname + " boeken voor een evenement.",
+        subject: " Offerte Aanvraag voor "+ artistname +"!",
+        body: " Ik wil graag op de datum "+ selectedDate +" de artiest " + artistname + " boeken voor een evenement.",
         recipients: ["lloyd.larbi@hva.nl"],
       })
     } else {
