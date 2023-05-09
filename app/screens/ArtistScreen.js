@@ -36,7 +36,7 @@ function ArtistScreen({ navigation }) {
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => navigation.push("ArtistDetails", { item: item })}
+            onPress={() => navigation.navigate('ArtistDetails', { item: item })}
           >
             <Card
               title={item.title}

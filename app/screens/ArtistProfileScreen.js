@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   Pressable,
+  SafeAreaView,
 } from "react-native";
 
 import colors from "../config/colors";
@@ -17,6 +18,8 @@ import {
   CollapseBody,
 } from "accordion-collapse-react-native";
 import CalendarScreen from "./CalendarScreen";
+import { FlatList } from "react-native-gesture-handler";
+import listings from "../config/listings";
 
 const renderItem = (item) => (
   <Collapse key={item.title}>
@@ -50,66 +53,73 @@ function ArtistProfileScreen({ navigation, route }) {
           />
         </Pressable>
       </View>
-      <View style={styles.collapseContainer}>
-        <Collapse>
-          <CollapseHeader>
-            <Text style={styles.button}>
-              {`Bio:\t\t\t\t\t\t`}
-              <AntDesign name="downsquare" size={30} color={colors.light} />
-            </Text>
-          </CollapseHeader>
-          <CollapseBody style={styles.collapseBody}>
-            <ScrollView>
-              <Text style={styles.text}>{route.params.item.bio}</Text>
-            </ScrollView>
-          </CollapseBody>
-        </Collapse>
-      </View>
-      <View style={styles.collapseContainer}>
-        <Collapse>
-          <CollapseHeader>
-            <Text style={styles.button}>
-              {`Optredens:\t\t\t`}
-              <AntDesign name="downsquare" size={30} color={colors.light} />
-            </Text>
-          </CollapseHeader>
-          <CollapseBody style={styles.collapseBody}>
-            <ScrollView>
-              <Text style={styles.text}>{route.params.item.optreden}</Text>
-            </ScrollView>
-          </CollapseBody>
-        </Collapse>
-      </View>
-      <View style={styles.collapseContainer}>
-        <Collapse>
-          <CollapseHeader>
-            <Text style={styles.button}>
-              {`Prijs:\t\t\t`}
-              <AntDesign name="downsquare" size={30} color={colors.light} />
-            </Text>
-          </CollapseHeader>
-          <CollapseBody style={styles.collapseBody}>
-            <ScrollView>
-              <Text style={styles.text}>{route.params.item.price}</Text>
-            </ScrollView>
-          </CollapseBody>
-        </Collapse>
-      </View>
-      <View style={styles.collapseContainer}>
-        <Collapse>
-          <CollapseHeader>
-            <Text style={styles.button}>
-              {`Beschikbaarheid:\t`}
-              <AntDesign name="downsquare" size={30} color={colors.light} />
-            </Text>
-          </CollapseHeader>
-          <CollapseBody style={styles.collapseBody}>
-            <ScrollView>
-              <CalendarScreen></CalendarScreen>
-            </ScrollView>
-          </CollapseBody>
-        </Collapse>
-      </View>
+        <FlatList
+          data={listings.slice(0,1)}
+          renderItem={({ item }) => (
+            <>   
+            <View style={styles.collapseContainer}>
+            <Collapse>
+              <CollapseHeader>
+                <Text style={styles.button}>
+                  {`Bio:\t\t\t\t\t\t`}
+                  <AntDesign name="downsquare" size={30} color={colors.light} />
+                </Text>
+              </CollapseHeader>
+              <CollapseBody style={styles.collapseBody}>
+                <ScrollView>
+                  <Text style={styles.text}>{route.params.item.bio}</Text>
+                </ScrollView>
+              </CollapseBody>
+            </Collapse>
+          </View>
+          <View style={styles.collapseContainer}>
+            <Collapse>
+              <CollapseHeader>
+                <Text style={styles.button}>
+                  {`Optredens:\t\t\t`}
+                  <AntDesign name="downsquare" size={30} color={colors.light} />
+                </Text>
+              </CollapseHeader>
+              <CollapseBody style={styles.collapseBody}>
+                <ScrollView>
+                  <Text style={styles.text}>{route.params.item.optreden}</Text>
+                </ScrollView>
+              </CollapseBody>
+            </Collapse>
+          </View>
+          <View style={styles.collapseContainer}>
+            <Collapse>
+              <CollapseHeader>
+                <Text style={styles.button}>
+                  {`Prijs:\t\t\t\t\t\t`}
+                  <AntDesign name="downsquare" size={30} color={colors.light} />
+                </Text>
+              </CollapseHeader>
+              <CollapseBody style={styles.collapseBody}>
+                <ScrollView>
+                  <Text style={styles.text}>{route.params.item.price}</Text>
+                </ScrollView>
+              </CollapseBody>
+            </Collapse>
+          </View>
+          <View style={styles.collapseContainer}>
+            <Collapse>
+              <CollapseHeader>
+                <Text style={styles.button}>
+                  {`Beschikbaarheid:\t`}
+                  <AntDesign name="downsquare" size={30} color={colors.light} />
+                </Text>
+              </CollapseHeader>
+              <CollapseBody style={styles.collapseBody}>
+                <ScrollView>
+                  <CalendarScreen artistname={route.params.item.title}></CalendarScreen>
+                </ScrollView>
+              </CollapseBody>
+            </Collapse>
+          </View>
+          </>
+            )}
+        />
     </Screen>
   );
 }
@@ -160,3 +170,4 @@ const styles = StyleSheet.create({
 });
 
 export default ArtistProfileScreen;
+

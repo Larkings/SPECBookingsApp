@@ -1,3 +1,4 @@
+
 import React, {  useState, useEffect  } from "react";
 import {
   ImageBackground,
@@ -100,7 +101,7 @@ function WelcomeScreen({ navigation }) {
     source={require("../assets/sep09.jpg")}
     >
       <Stack.Navigator>
-      <Stack.Screen name="Artists" component={FavouriteScreen} />
+      <Stack.Screen name="Artists"options={{ headerShown: false }}component={FavouriteScreen} />
       </Stack.Navigator>
     </ImageBackground>
   );
@@ -199,3 +200,4 @@ const styles = StyleSheet.create({
 });
 
 export default WelcomeScreen;
+

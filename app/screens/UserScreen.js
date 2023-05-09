@@ -1,16 +1,18 @@
+
 import React, {  useState, useEffect  } from "react";
 import { View, Button, StyleSheet, ImageBackground } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { firebase } from '../../config';
 
-function UserScreen({navigation}) {
+
+function UserScreen ({navigation}) {
   const Stack = createNativeStackNavigator();
   const [name, setName] = useState("");
-
+  
   useEffect(() => {
     firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get()
     .then((snapshot) => {
-      if (snapshot.exists){
+      if(snapshot.exists){
         setName(snapshot.data())
       }
       else{
@@ -30,9 +32,11 @@ function UserScreen({navigation}) {
 
   const signOutMethod = () => {
     firebase.auth().signOut()
-    .then(()=>
-      navigation.push("Welcome")
-    )
+    .then(()=> 
+    navigation.navigate('Welcome')
+    ).catch((error) => {
+      console.log(error)
+    });
   }
 
   return(
@@ -41,10 +45,10 @@ function UserScreen({navigation}) {
     source={require("../assets/sep09.jpg")}
     >
       <View style={styles.changePass}>
-        <Button title="Change Password" onPress={() => changePassword()} />
+        <Button title="Change Password" onPress={changePassword} />
       </View>
       <View style={styles.loginButton}>
-        <Button title="Sign out" onPress= {()=> signOutMethod()} />
+        <Button title="Sign out" onPress={signOutMethod} />
       </View>
     </ImageBackground>
   )
